@@ -1,5 +1,9 @@
 import streamlit as st
 
+ICON_IMAGE = "data/logo.png"
+st.logo(ICON_IMAGE)
+st.sidebar.markdown("Hi!")
+
 st.title('Football Team')
 
 player_info = {
