@@ -20,3 +20,4 @@ def chat(prompt):
         temperature = 0.3,
     )
     return completion.choices[0].message.content
+

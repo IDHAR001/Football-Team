@@ -1,6 +1,6 @@
 import streamlit as st
-from llm import chat
-
+# from llm import chat
+from gemini import chat
 st.set_page_config(page_title="IDHAR - Football Team",
                    page_icon="🦾",
                    layout="wide",
