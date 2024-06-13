@@ -32,7 +32,7 @@ jobs:
         push: true
         tags: idhar01/football_team_amd:${{ github.sha }}
         file: ./Dockerfile
-        secrets: |
+        secret-envs: |
             GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}  
             MOONSHOT_API_KEY=${{ secrets.MOONSHOT_API_KEY }}
 
