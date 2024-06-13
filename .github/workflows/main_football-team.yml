@@ -48,4 +48,4 @@ jobs:
         app-name: 'football-team'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_5334dc116da749dd8af3543e049502ee }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0008508a27284df7a43de819b1e476f1 }}/idhar01/football_team_amd:${{ github.sha }}'
+        images: 'idhar01/football_team_amd:${{ github.sha }}'
