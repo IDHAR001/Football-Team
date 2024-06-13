@@ -9,7 +9,7 @@ ENV MOONSHOT_API_KEY=$MOONSHOT_API_KEY
 
 WORKDIR /app
 COPY . /app
-RUN /app/.env
+RUN rm /app/.env
 
 EXPOSE 8080
 RUN pip install -r requirements.txt
