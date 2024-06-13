@@ -28,14 +28,17 @@ with st.sidebar:
         anwser = load_chat(loaded_llm, prompt)
         messages.chat_message("user").write(prompt)
         messages.chat_message("assistant").write(anwser)
- 
-# player_info = {
-#     'age': st.number_input('Age'),
-#     'height': st.number_input('Height(cm)'),
-#     'weight': st.number_input('Weight(kg)'),
-# }
 
-# st.button('Run')
+with st.container():
+    st.header("Player Info")
+    player_info = {
+        'age': st.number_input('Age', min_value=1, max_value=60),
+        'height': st.number_input('Height(cm)'),
+        'weight': st.number_input('Weight(kg)'),
+        }
 
-# st.write(f'Player: {player_info["age"]}')
+    run = st.button('Run')
+    if run:
+        st.write(f'Player age: {player_info["age"]}')
+
 
