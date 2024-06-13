@@ -1,46 +1,10 @@
 import streamlit as st
 from streamlit_agraph import agraph, Node, Edge, Config
-from PIL import Image
 import base64
-from llm import load_llm
-from chat import load_chat
 
-st.set_page_config(page_title="IDHAR - Football Team",
-                   page_icon="🦾",
-                   layout="wide",
-                   initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Football Team", layout="wide")
 
 st.title('Football Team')
-
-ICON_IMAGE = "data/logo.png"
-st.logo(ICON_IMAGE)
-st.sidebar.markdown("Hi! I'm idhar! What's your question!")
-
-# select llm
-llm_selectbox = st.sidebar.selectbox(
-    "Select your LLM",
-    ("Gemini", "Kimi")
-)
-
-loaded_llm = load_llm(llm_selectbox)
-
-
-with st.sidebar:
-    messages = st.container()
-    if prompt := st.chat_input("Say something"):
-        anwser = load_chat(loaded_llm, prompt)
-        messages.chat_message("user").write(prompt)
-        messages.chat_message("assistant").write(anwser)
- 
-# player_info = {
-#     'age': st.number_input('Age'),
-#     'height': st.number_input('Height(cm)'),
-#     'weight': st.number_input('Weight(kg)'),
-# }
-
-# st.button('Run')
-
-# st.write(f'Player: {player_info["age"]}')
 
 # Transfer image to Base64
 def image_to_base64(image_path):
@@ -48,11 +12,8 @@ def image_to_base64(image_path):
         b64_string = base64.b64encode(img_file.read()).decode("utf-8")
     return b64_string
 
-
-
 nodes = []
 edges = []
-b64_pic = []
 zzc_b64 = image_to_base64("data/zzc.png")
 lcm_b64 = image_to_base64("data/lcm.png")
 cyq_b64 = image_to_base64("data/cyq.png")
