@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_0008508a27284df7a43de819b1e476f1 }}/idhar01/football_team_amd:${{ github.sha }}
+        tags: idhar01/football_team_amd:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
