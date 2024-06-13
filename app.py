@@ -2,27 +2,33 @@ import streamlit as st
 from streamlit_agraph import agraph, Node, Edge, Config
 from PIL import Image
 import base64
+from llm import load_llm
+from chat import load_chat
 
-
-# from llm import chat
-from gemini import chat
 st.set_page_config(page_title="IDHAR - Football Team",
                    page_icon="🦾",
                    layout="wide",
                    initial_sidebar_state="collapsed")
+
 st.title('Football Team')
+
 ICON_IMAGE = "data/logo.png"
 st.logo(ICON_IMAGE)
 st.sidebar.markdown("Hi! I'm idhar! What's your question!")
 
-# prompt = st.sidebar.chat_input("Say sth")
+# select llm
+llm_selectbox = st.sidebar.selectbox(
+    "Select your LLM",
+    ("Gemini", "Kimi")
+)
 
-# if prompt:
-#     st.sidebar.write(f"User said: {prompt}")
+loaded_llm = load_llm(llm_selectbox)
+
+
 with st.sidebar:
     messages = st.container()
     if prompt := st.chat_input("Say something"):
-        anwser = chat(prompt)
+        anwser = load_chat(loaded_llm, prompt)
         messages.chat_message("user").write(prompt)
         messages.chat_message("assistant").write(anwser)
  
@@ -137,3 +143,6 @@ config = Config(width=1000,
 return_value = agraph(nodes=nodes, 
                       edges=edges, 
                       config=config)
+
+
+
